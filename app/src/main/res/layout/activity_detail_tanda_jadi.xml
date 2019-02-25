@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".read.DetailTandaJadiActivity"
+        android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"/>
+
+        <TextView
+                android:id="@+id/txt_detail_tj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="tanda jadi"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:padding="10dp">
+
+            <Button
+                    android:id="@+id/btn_pindah_update"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="20dp"
+                    android:text="update"
+                    android:textSize="20dp"/>
+
+            <Button
+                    android:id="@+id/btn_pindah_delete"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:text="delete"
+                    android:textSize="20dp"/>
+
+        </LinearLayout>
+
+</LinearLayout>
