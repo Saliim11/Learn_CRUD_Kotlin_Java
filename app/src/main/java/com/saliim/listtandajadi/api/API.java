@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class API {
 
     static Retrofit retrofit;
-    public static String baseURL = "http://192.168.18.96/";
+    public static String baseURL = "http://192.168.18.76/";
 
     public static Retrofit getInstance() {
         if (retrofit == null) {

@@ -55,7 +55,7 @@ class UpdateTandaJadiActivity : AppCompatActivity() {
         progressDialog.show()
 
         val id = this.intent.getStringExtra(UP_ID_TJ)
-        val mod_by = "pace modified"
+        val mod_by = "2"
         val tanda_jadi = in_tanda_jadi.text.toString()
 
         API.editTandaJadi(id, tanda_jadi, mod_by).enqueue(object : Callback<UpdateTandaJadi>{

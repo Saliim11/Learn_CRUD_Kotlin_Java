@@ -50,7 +50,7 @@ class AddListTandaJadi : AppCompatActivity() {
         progressDialog.setMessage("Creating...")
         progressDialog.show()
 
-        val create_by = "pace"
+        val create_by = "1"
         val tanda_jadi = in_tanda_jadi.text.toString()
 
         API.addTandaJadi(tanda_jadi, create_by).enqueue(object : Callback<InsertTandaJadi> {
