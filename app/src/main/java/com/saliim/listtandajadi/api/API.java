@@ -11,10 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class API {
 
     static Retrofit retrofit;
-    public static String baseURL = "http://192.168.18.76/";
+    public static String baseURL = "http://192.168.18.232/";
 
     public static Retrofit getInstance() {
         if (retrofit == null) {
@@ -67,10 +64,11 @@ public class API {
 
     public interface SupervisiService {
 
+        @FormUrlEncoded
         @POST("insert_tanda_jadi.php")
         Call<InsertTandaJadi> addTandaJadi(
-                @Query("tanda_jadi") String  tanda_jadi,
-                @Query("create_by") String create_by);
+                @Field("tanda_jadi") String  tanda_jadi,
+                @Field("create_by") String create_by);
 
         @GET("get_tanda_jadi.php")
         Call<ArrayList<DataTandaJadi>> getDataTandaJadi();
@@ -79,11 +77,12 @@ public class API {
         Call<ResponseBody> deleteTandaJadi(
                 @Query("id") String id);
 
+        @FormUrlEncoded
         @POST("update_tanda_jadi.php")
         Call<UpdateTandaJadi> editTandaJadi(
-                @Query("id") String id,
-                @Query("tanda_jadi") String tanda_jadi,
-                @Query("mod_by") String mod_by);
+                @Field("id") String id,
+                @Field("tanda_jadi") String tanda_jadi,
+                @Field("mod_by") String mod_by);
 
     }
 }
