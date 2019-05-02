@@ -32,11 +32,11 @@ class AddListTandaJadi : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        add_activity.setOnClickListener {
+        btn_add.setOnClickListener {
             val inputTj = in_tanda_jadi.text.toString()
 
             if (inputTj.isEmpty()){
-                in_tanda_jadi.setError("kolom tidak boleh kosong")
+                in_tanda_jadi.error = "kolom tidak boleh kosong"
             }else{
                 doCreate()
             }
@@ -44,7 +44,6 @@ class AddListTandaJadi : AppCompatActivity() {
 
     }
 
-    //when button save clicked
     private fun doCreate() {
         val progressDialog = ProgressDialog(this@AddListTandaJadi)
         progressDialog.setMessage("Creating...")

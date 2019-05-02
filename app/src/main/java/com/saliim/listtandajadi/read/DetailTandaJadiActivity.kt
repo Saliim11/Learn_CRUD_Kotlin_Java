@@ -26,18 +26,14 @@ class DetailTandaJadiActivity : AppCompatActivity() {
 
         toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar!!.setTitle("Detail Tanda Jadi")
+        supportActionBar!!.title = "Detail Tanda Jadi"
 
 
         val idTj = this.intent.getStringExtra(ID_TJ)
         val tj = this.intent.getStringExtra(TANDA_JADI)
 //        val createByTj = this.intent.getStringExtra(CREATE_BY)
 
-//        Log.d("cek idTJ", ""+idTj)
-//        Log.d("cek tj", ""+ tj)
-//        Log.d("cek createByTj", ""+createByTj)
-
-        txt_detail_tj.text = "Rp."+tj
+        txt_detail_tj.text = "Rp.$tj"
 
         btn_pindah_update.setOnClickListener {
             val intent = Intent(this@DetailTandaJadiActivity, UpdateTandaJadiActivity::class.java)

@@ -35,12 +35,12 @@ class UpdateTandaJadiActivity : AppCompatActivity() {
 
         in_tanda_jadi.setText(upTj)
 
-        add_activity.setOnClickListener {
+        btn_add.setOnClickListener {
 
             val inputTj = in_tanda_jadi.text.toString()
 
             if (inputTj.isEmpty()){
-                in_tanda_jadi.setError("kolom tidak boleh kosong")
+                in_tanda_jadi.error = "kolom tidak boleh kosong"
             }else{
                 doUpdate()
             }

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar!!.setTitle("List Tanda Jadi")
+        supportActionBar!!.title = "List Tanda Jadi"
 
         add_button.setOnClickListener {
             val intent = Intent(this@MainActivity, AddListTandaJadi::class.java)
@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getData() {
+
         API.getDataTandaJadi().enqueue(object : Callback<ArrayList<DataTandaJadi>> {
             override fun onResponse(call: Call<ArrayList<DataTandaJadi>>, response: Response<ArrayList<DataTandaJadi>>) {
                 if (response.code() == 200) {
