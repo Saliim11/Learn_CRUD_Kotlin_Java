@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra(DetailTandaJadiActivity.ID_TJ, tempDatas!![position].id)
                     intent.putExtra(DetailTandaJadiActivity.TANDA_JADI, tempDatas!![position].tandaJadi)
                     intent.putExtra(DetailTandaJadiActivity.CREATE_BY, tempDatas!![position].createBy)
+                    intent.putExtra(DetailTandaJadiActivity.KATEGORI_MOTOR, tempDatas!![position].kategoriMotor)
 
 //                    Log.d("CEK ID", "" + tempDatas!![position].tandaJadi)
 

@@ -29,7 +29,7 @@ public class TandaJadiAdapter extends RecyclerView.Adapter<TandaJadiAdapter.Tand
     @Override
     public void onBindViewHolder(TandaJadiViewHolder holder, int position) {
         DataTandaJadi dataTandaJadi = dataSet.get(position);
-        holder.txtTandaJadi.setText("Rp."+dataTandaJadi.getTandaJadi());
+        holder.txtTandaJadi.setText(dataTandaJadi.getKategoriMotor());
         holder.txtCreateBy.setText(dataTandaJadi.getCreateBy());
     }
 

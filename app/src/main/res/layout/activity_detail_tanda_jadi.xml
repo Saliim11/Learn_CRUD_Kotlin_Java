@@ -11,13 +11,24 @@
     <include
         layout="@layout/toolbar"/>
 
+    <TextView
+            android:id="@+id/txt_detail_kategori_motor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="kategori"
+            android:textSize="45dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"/>
+
         <TextView
                 android:id="@+id/txt_detail_tj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="tanda jadi"
                 android:textSize="30dp"
-                android:textStyle="bold"
                 android:textColor="#000000"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"/>

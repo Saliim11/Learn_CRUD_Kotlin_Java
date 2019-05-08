@@ -27,7 +27,7 @@ class UpdateTandaJadiActivity : AppCompatActivity() {
 
         toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar!!.setTitle("Update Tanda Jadi")
+        supportActionBar!!.title = "Update Tanda Jadi"
 //        titleSearch!!.text = "Add Activity"
 //        titleSearch!!.setTextColor(Color.WHITE)
 
@@ -55,7 +55,7 @@ class UpdateTandaJadiActivity : AppCompatActivity() {
         progressDialog.show()
 
         val id = this.intent.getStringExtra(UP_ID_TJ)
-        val mod_by = "2"
+        val mod_by = "Pace"
         val tanda_jadi = in_tanda_jadi.text.toString()
 
         API.editTandaJadi(id, tanda_jadi, mod_by).enqueue(object : Callback<UpdateTandaJadi>{

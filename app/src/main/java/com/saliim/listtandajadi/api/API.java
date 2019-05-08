@@ -2,6 +2,7 @@ package com.saliim.listtandajadi.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.saliim.listtandajadi.model.DataKategoriMotor;
 import com.saliim.listtandajadi.model.DataTandaJadi;
 import com.saliim.listtandajadi.model.InsertTandaJadi;
 import com.saliim.listtandajadi.model.UpdateTandaJadi;
@@ -42,32 +43,38 @@ public class API {
         return retrofit;
     }
 
-    public static Call<InsertTandaJadi> addTandaJadi(String tanda_jadi, String create_by) {
-        SupervisiService service = getInstance().create(SupervisiService.class);
-        return service.addTandaJadi(tanda_jadi, create_by);
+    public static Call<InsertTandaJadi> addTandaJadi(String tanda_jadi, String create_by, String kategori_motor) {
+        TandaJadiService service = getInstance().create(TandaJadiService.class);
+        return service.addTandaJadi(tanda_jadi, create_by, kategori_motor);
     }
 
     public static Call<ArrayList<DataTandaJadi>> getDataTandaJadi() {
-        SupervisiService service = getInstance().create(SupervisiService.class);
+        TandaJadiService service = getInstance().create(TandaJadiService.class);
         return service.getDataTandaJadi();
     }
 
     public static Call<ResponseBody> deleteTandaJadi(String id){
-        SupervisiService service = getInstance().create(SupervisiService.class);
+        TandaJadiService service = getInstance().create(TandaJadiService.class);
         return service.deleteTandaJadi(id);
     }
 
     public static Call<UpdateTandaJadi> editTandaJadi(String id, String tanda_jadi, String mod_by) {
-        SupervisiService service = getInstance().create(SupervisiService.class);
+        TandaJadiService service = getInstance().create(TandaJadiService.class);
         return service.editTandaJadi(id, tanda_jadi, mod_by);
     }
 
-    public interface SupervisiService {
+    public static Call<ArrayList<DataKategoriMotor>> dataKategoriMotor() {
+        TandaJadiService service = getInstance().create(TandaJadiService.class);
+        return service.dataKategoriMotor();
+    }
+
+    public interface TandaJadiService {
 
         @FormUrlEncoded
         @POST("insert_tanda_jadi.php")
         Call<InsertTandaJadi> addTandaJadi(
                 @Field("tanda_jadi") String  tanda_jadi,
+                @Field("kategori_motor") String kategori_motor,
                 @Field("create_by") String create_by);
 
         @GET("get_tanda_jadi.php")
@@ -84,5 +91,7 @@ public class API {
                 @Field("tanda_jadi") String tanda_jadi,
                 @Field("mod_by") String mod_by);
 
+        @GET("get_motor_kategori.php")
+        Call<ArrayList<DataKategoriMotor>> dataKategoriMotor();
     }
 }

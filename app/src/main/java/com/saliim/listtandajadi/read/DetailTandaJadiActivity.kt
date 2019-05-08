@@ -31,9 +31,11 @@ class DetailTandaJadiActivity : AppCompatActivity() {
 
         val idTj = this.intent.getStringExtra(ID_TJ)
         val tj = this.intent.getStringExtra(TANDA_JADI)
+        val km = this.intent.getStringExtra(KATEGORI_MOTOR)
 //        val createByTj = this.intent.getStringExtra(CREATE_BY)
 
         txt_detail_tj.text = "Rp.$tj"
+        txt_detail_kategori_motor.text = km
 
         btn_pindah_update.setOnClickListener {
             val intent = Intent(this@DetailTandaJadiActivity, UpdateTandaJadiActivity::class.java)
@@ -82,6 +84,7 @@ class DetailTandaJadiActivity : AppCompatActivity() {
         val ID_TJ = "id"
         val TANDA_JADI = "tanda_jadi"
         val CREATE_BY = "create_by"
+        val KATEGORI_MOTOR = "kategori_motor"
     }
 
 }
