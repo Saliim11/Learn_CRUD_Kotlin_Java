@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.activity_add_list_tanda_jadi.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DecimalFormat
-import java.text.NumberFormat
 
 class AddListTandaJadi : AppCompatActivity(), AdapterView.OnItemClickListener {
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -32,7 +30,7 @@ class AddListTandaJadi : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     var kategori_motor : ArrayList<DataKategoriMotor?>? = null
 
-    var formatter: NumberFormat = DecimalFormat("#,###.00")
+//    var formatter: NumberFormat = DecimalFormat("#,###")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,12 +68,12 @@ class AddListTandaJadi : AppCompatActivity(), AdapterView.OnItemClickListener {
         progressDialog.show()
 
         val create_by = "Hasbi"
-        val tanda_jadi = java.lang.Double.parseDouble(in_tanda_jadi.text.toString())
+        val tanda_jadi = in_tanda_jadi.text.toString()
         val kategori_motor = spn_kategori_motor.selectedItem.toString()
 
-        val tanda_jadis = formatter.format(tanda_jadi)
+//        val tanda_jadis = formatter.format(tanda_jadi)
 
-        API.addTandaJadi(tanda_jadis, kategori_motor, create_by).enqueue(object : Callback<InsertTandaJadi> {
+        API.addTandaJadi(tanda_jadi, kategori_motor, create_by).enqueue(object : Callback<InsertTandaJadi> {
             override fun onResponse(call: Call<InsertTandaJadi>, response: Response<InsertTandaJadi>) {
                 if (response.code() == 200){
                     Log.i("insert", "" + response.body())

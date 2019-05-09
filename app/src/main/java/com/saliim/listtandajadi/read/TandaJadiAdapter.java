@@ -8,10 +8,14 @@ import android.widget.TextView;
 import com.saliim.listtandajadi.R;
 import com.saliim.listtandajadi.model.DataTandaJadi;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TandaJadiAdapter extends RecyclerView.Adapter<TandaJadiAdapter.TandaJadiViewHolder> {
+    NumberFormat formatter = new DecimalFormat("#,###");
+
     private List<DataTandaJadi> dataSet;
 
     public TandaJadiAdapter(ArrayList<DataTandaJadi> tempData) {
@@ -29,8 +33,12 @@ public class TandaJadiAdapter extends RecyclerView.Adapter<TandaJadiAdapter.Tand
     @Override
     public void onBindViewHolder(TandaJadiViewHolder holder, int position) {
         DataTandaJadi dataTandaJadi = dataSet.get(position);
-        holder.txtTandaJadi.setText(dataTandaJadi.getKategoriMotor());
-        holder.txtCreateBy.setText(dataTandaJadi.getCreateBy());
+
+        double myNumber = Double.parseDouble(dataTandaJadi.getTandaJadi());
+        String formattedNumber = formatter.format(myNumber);
+
+        holder.txtTandaJadi.setText("Rp"+formattedNumber);
+        holder.txtKategori.setText("Kategori "+dataTandaJadi.getKategoriMotor());
     }
 
     @Override
@@ -43,12 +51,13 @@ public class TandaJadiAdapter extends RecyclerView.Adapter<TandaJadiAdapter.Tand
     }
 
     public class TandaJadiViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtTandaJadi, txtCreateBy;
+
+        public TextView txtTandaJadi, txtKategori;
 
         public TandaJadiViewHolder(View itemView) {
             super(itemView);
             txtTandaJadi = itemView.findViewById(R.id.txt_tanda_jadi);
-            txtCreateBy = itemView.findViewById(R.id.txt_create_by);
+            txtKategori = itemView.findViewById(R.id.txt_kategori);
 
         }
     }

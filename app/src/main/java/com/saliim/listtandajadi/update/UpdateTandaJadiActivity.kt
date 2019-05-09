@@ -12,7 +12,7 @@ import com.saliim.listtandajadi.R
 import com.saliim.listtandajadi.api.API
 import com.saliim.listtandajadi.model.UpdateTandaJadi
 import com.saliim.listtandajadi.read.MainActivity
-import kotlinx.android.synthetic.main.activity_add_list_tanda_jadi.*
+import kotlinx.android.synthetic.main.activity_update_tanda_jadi.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,30 +23,35 @@ class UpdateTandaJadiActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_list_tanda_jadi)
+        setContentView(R.layout.activity_update_tanda_jadi)
 
         toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.title = "Update Tanda Jadi"
-//        titleSearch!!.text = "Add Activity"
-//        titleSearch!!.setTextColor(Color.WHITE)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         val upTj = this.intent.getStringExtra(UP_TANDA_JADI)
 
-        in_tanda_jadi.setText(upTj)
+        in_tanda_jadi_update.setText(upTj)
 
-        btn_add.setOnClickListener {
+        btn_update.setOnClickListener {
 
-            val inputTj = in_tanda_jadi.text.toString()
+            val inputTj = in_tanda_jadi_update.text.toString()
 
             if (inputTj.isEmpty()){
-                in_tanda_jadi.error = "kolom tidak boleh kosong"
+                in_tanda_jadi_update.error = "kolom tidak boleh kosong"
             }else{
                 doUpdate()
             }
 
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun doUpdate() {
@@ -56,7 +61,7 @@ class UpdateTandaJadiActivity : AppCompatActivity() {
 
         val id = this.intent.getStringExtra(UP_ID_TJ)
         val mod_by = "Pace"
-        val tanda_jadi = in_tanda_jadi.text.toString()
+        val tanda_jadi = in_tanda_jadi_update.text.toString()
 
         API.editTandaJadi(id, tanda_jadi, mod_by).enqueue(object : Callback<UpdateTandaJadi>{
             override fun onResponse(call: Call<UpdateTandaJadi>, response: Response<UpdateTandaJadi>) {

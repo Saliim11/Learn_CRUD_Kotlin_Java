@@ -15,10 +15,14 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class DetailTandaJadiActivity : AppCompatActivity() {
 
     private var toolbar: Toolbar? = null
+
+    var formatter: NumberFormat = DecimalFormat("#,###")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +31,18 @@ class DetailTandaJadiActivity : AppCompatActivity() {
         toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.title = "Detail Tanda Jadi"
-
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         val idTj = this.intent.getStringExtra(ID_TJ)
         val tj = this.intent.getStringExtra(TANDA_JADI)
         val km = this.intent.getStringExtra(KATEGORI_MOTOR)
 //        val createByTj = this.intent.getStringExtra(CREATE_BY)
 
-        txt_detail_tj.text = "Rp.$tj"
+        val tjD1 = java.lang.Double.parseDouble(tj)
+        val tjD2 = formatter.format(tjD1)
+
+        txt_detail_tj.text = "Rp.$tjD2"
         txt_detail_kategori_motor.text = km
 
         btn_pindah_update.setOnClickListener {
@@ -48,6 +56,11 @@ class DetailTandaJadiActivity : AppCompatActivity() {
             doDelete()
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun doDelete() {
